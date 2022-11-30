@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Mockify.Source.Errors;
+
 namespace Mockify.Source.Modules;
 
 public static class Modules
@@ -11,6 +13,8 @@ public static class Modules
         var rng = new Random();
         for (int i = 1; i < arg.Length; i++)
         {
+            ErrorSpace.CheckMisplacedArg(arg[i]);
+
             char[] argv = arg[i].ToArray();
             string making = String.Empty;
 
@@ -30,7 +34,7 @@ public static class Modules
     return arg;
     }
 
-    public static List<string> Bottomify(string[] arg)
+    public static List<string> Bottomify(string[] arg, bool isLower)
     {
         var bottom = new List<string>();
         var rng = new Random();
@@ -40,15 +44,29 @@ public static class Modules
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToArray();
 
         for (int i = 1; i < arg.Length; i++)
-            bottom.Add(arg[i].ToUpper());
+        { 
+            if (isLower)
+                bottom.Add(arg[i]);
+            else
+            {
+                ErrorSpace.CheckMisplacedArg(arg[i]);
+                bottom.Add(arg[i].ToUpper());
+            }
+        }
 
         for (int i = 0; i < index; i++)
-        { 
+        {
             int charRnd = rng.Next(0, alphabet.Length);
-            spam += alphabet[charRnd];
+            if(isLower)
+                spam += char.ToLower(alphabet[charRnd]);
+            else
+                spam += alphabet[charRnd];
         }
 
         bottom.Add(spam);
+
+        if(isLower)
+            bottom.Remove(arg[1]);
 
     return bottom;
     }

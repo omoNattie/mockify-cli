@@ -13,20 +13,21 @@ class Mockify
     {
         ErrorSpace.HandleArgs(args);
 
-        string ver = "0.5 release build 1";
+        string ver = "0.6 release build 2";
 
         switch(args[0])
         {
-            case "-help":
+            case "--help":
                 Console.WriteLine(
                     "Description:\n" +
                     "   Makes your text wacky!\n\n" +
                     "Usage:\n" +
-                    "   mockify [flags] [sentance]\n\n" +
+                    "   mockify [flags] (options) [sentance]\n\n" +
                     "Flags:\n" +
                     "   --help       This command.\n" +
                     "   --birdify    Gives your text random caps to \"mock\" someone.\n" +
-                    "   --bottomify  Gives your text \"bottom\" vibes.\n\n" +
+                    "   --bottomify  Gives your text \"bottom\" vibes.\n" +
+                    "       -l       Option for only the bottomify flag, makes it lowercaps.\n\n" +
                     "   --version    Shows app version"
                 );
             break;
@@ -38,7 +39,11 @@ class Mockify
             break;
 
             case "--bottomify":
-                List<string> finBottom = Bottomify(args);
+                bool isLower = false;
+                if (args[1] == "-lower" || args[1] == "-l")
+                    isLower = true;
+
+                List<string> finBottom = Bottomify(args, isLower);
                 foreach (var item in finBottom)
                     Console.Write($"{item} ");
             break;
