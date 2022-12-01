@@ -1,7 +1,9 @@
 ### mockify-cli
 
+### Usage:
 ![help-showcase](https://github.com/omoNattie/mockify-cli/blob/master/mockify/Source/Assets/Images/help.png) <br>
 
+### Installing: 
 ```git
 git clone https://github.com/omoNattie/mockify-cli.git
 ```
@@ -11,12 +13,14 @@ cd mockify-cli/mockify
 dotnet build
 
 cd bin/Debug/net6.0
+
+./mockify --help
 ```
+### Post-install:
 
-then run the program based on your OS.
-
-### For linux users
 To remove the "./" by adding it to your PATH and be able to use it everywhere. <br>
+### For linux users:
+
 ### Moving the script to a folder
 ```bash
 mkdir ~/mockify-script
@@ -39,7 +43,7 @@ for bash
 PATH="~/mockify-script:$PATH"
 ```
 
-### For windows users
+### For windows users:
 Adding to PATH and being able to use it everywhere. <br>
 
 ### Moving the script to a folder
@@ -50,8 +54,8 @@ cd ~/mockify-cli/mockify/bin/Debug/net6.0
 mv ./* ~/mockify-script
 ```
 
-### Add folder to PATH <br>
-Now, start an administrative powershell.
+### Adding folder to PATH <br>
+Start an administrative powershell.
 ```bash
 setx PATH "$env:path;C:\Users\{your_name}\mockify-script" -m
 ```
