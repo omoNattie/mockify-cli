@@ -1,5 +1,7 @@
 ### mockify-cli
 
+![help-showcase](https://github.com/omoNattie/mockify-cli/blob/master/mockify/Source/Assets/Images/help.png) <br>
+
 ```git
 git clone https://github.com/omoNattie/mockify-cli.git
 ```
@@ -47,6 +49,8 @@ cd ~/mockify-cli/mockify/bin/Debug/net6.0
 
 mv ./* ~/mockify-script
 ```
+
+### Add folder to PATH <br>
 Now, start an administrative powershell.
 ```bash
 setx PATH "$env:path;C:\Users\{your_name}\mockify-script" -m
