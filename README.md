@@ -13,7 +13,7 @@ cd bin/Debug/net6.0
 
 then run the program based on your OS.
 
-### for linux users
+### For linux users
 To remove the "./" by adding it to your PATH and be able to use it everywhere. <br>
 ### Moving the script to a folder
 ```bash
@@ -21,11 +21,11 @@ mkdir ~/mockify-script
 
 cd mockify-cli/mockify/bin/Debug/net6.0
 chmod +x ./mockify
-sudo mv ./mockify ~/mockify-script
+sudo mv ./* ~/mockify-script
 ```
 ### Moving script to PATH
 for fish shell
-```
+```fish
 # ~/.config/fish/config.fish
 
 fish_add_path ~/mockify-script 
@@ -36,3 +36,20 @@ for bash
 
 PATH="~/mockify-script:$PATH"
 ```
+
+### For windows users
+Adding to PATH and being able to use it everywhere. <br>
+
+### Moving the script to a folder
+```bash
+mkdir ~/mockify-script
+cd ~/mockify-cli/mockify/bin/Debug/net6.0
+
+mv ./* ~/mockify-script
+```
+Now, start an administrative powershell.
+```bash
+setx PATH "$env:path;C:\Users\{your_name}\mockify-script" -m
+```
+
+Done!

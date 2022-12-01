@@ -44,13 +44,22 @@ public static class Modules
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToArray();
 
         for (int i = 1; i < arg.Length; i++)
-        { 
+        {
             if (isLower)
-                bottom.Add(arg[i]);
+            {
+                if(i == arg.Length - 1)
+                    bottom.Add(arg[i] + "~");
+                else
+                    bottom.Add(arg[i]);
+            }
             else
             {
                 ErrorSpace.CheckMisplacedArg(arg[i]);
-                bottom.Add(arg[i].ToUpper());
+
+                if (i == arg.Length - 1)
+                    bottom.Add(arg[i].ToUpper() + "~");
+                else
+                    bottom.Add(arg[i].ToUpper());
             }
         }
 
@@ -63,7 +72,7 @@ public static class Modules
                 spam += alphabet[charRnd];
         }
 
-        bottom.Add(spam);
+        bottom.Add(spam + " :pleading_face:");
 
         if(isLower)
             bottom.Remove(arg[1]);

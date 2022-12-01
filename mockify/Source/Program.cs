@@ -13,7 +13,7 @@ class Mockify
     {
         ErrorSpace.HandleArgs(args);
 
-        string ver = "0.6 release build 2";
+        string ver = "0.6.1 release build 3";
 
         switch(args[0])
         {
@@ -27,7 +27,7 @@ class Mockify
                     "   --help       This command.\n" +
                     "   --birdify    Gives your text random caps to \"mock\" someone.\n" +
                     "   --bottomify  Gives your text \"bottom\" vibes.\n" +
-                    "       -l       Option for only the bottomify flag, makes it lowercaps.\n\n" +
+                    "     -l -lower  Option for only the bottomify flag, makes it lowercaps.\n\n" +
                     "   --version    Shows app version"
                 );
             break;
@@ -41,7 +41,9 @@ class Mockify
             case "--bottomify":
                 bool isLower = false;
                 if (args[1] == "-lower" || args[1] == "-l")
+                {
                     isLower = true;
+                }
 
                 List<string> finBottom = Bottomify(args, isLower);
                 foreach (var item in finBottom)
